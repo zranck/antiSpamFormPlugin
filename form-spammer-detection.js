@@ -19,11 +19,11 @@ $(document).ready(function() {
     // https://www.spamhaus.org/statistics/countries/
     // https://www.projecthoneypot.org/comment_spammer_top_countries.php?dt=30
     //send IP to API
-    $.getJSON("http://freegeoip.net/json/", function (data) {
+    $.getJSON("https://freegeoip.net/json/", function (data) {
         var country = data.country_name;
         var ip = data.ip;
         console.log('ip is '+ip+' and country is '+country);
-      if ($.inArray(country, ['Russia', 'China', 'Ukraine', 'India', 'Thailand']) >= 0) {
+      if ($.inArray(country, ['Russia', 'China', 'Ukraine', 'India', 'Thailand', 'Mali']) >= 0) {
         badCountry(); //banned country found
       }
     });
@@ -36,7 +36,7 @@ $(document).ready(function() {
         userEmail=userEmail.split('@');
         userEmail=userEmail[1].split('.');
         userEmail=userEmail[1].toLowerCase().toString();
-    if(userEmail!='ru' && userEmail!='ua') {
+    if(userEmail!='ru' && userEmail!='ua' && userEmail!='ml' ) {
       console.log('pass'+userEmail);
       return true;
     } else {
@@ -47,10 +47,10 @@ $(document).ready(function() {
   
   function validPhone(e) {
      var userPhone=$('input[name=phone]').val();
-     if(userPhone.length!==10||!$.isNumeric(userPhone)) {
+     if(userPhone.length >= 11 ||!$.isNumeric(userPhone) || userPhone.length <= 9) {
+       e.preventDefault();
        alert('Please Enter A Valid 10 Digit Phone Number');
        $('input[name=phone]').focus();
-       e.preventDefault();
        console.log('fail');
        return false;
      }
@@ -61,7 +61,7 @@ $(document).ready(function() {
     //check the counter
     console.log(formCounter);
     if(formCounter<=4) {
-        badActor();
+        badActor(e);
     }
   }
   
