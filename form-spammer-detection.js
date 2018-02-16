@@ -41,7 +41,7 @@ $(document).ready(function() {
         domainEmail = domainEmail.split('@');
         domainEmail = domainEmail[1].split('.');
         domainEmail = domainEmail[0].toLowerCase().toString();
-    if(userEmail!='ru' && userEmail!='ua' && userEmail!='ml' && userEmail!='tst' && userEmail!='top' && userEmail!='xyz' && userEmail!='info' && domainEmail!='glmux.com') {
+    if(userEmail!='ru' && userEmail!='ua' && userEmail!='ml' && userEmail!='tst' && userEmail!='top' && userEmail!='xyz' && userEmail!='info' && domainEmail!='glmux') {
       console.log('pass'+userEmail);
       return true;
     } else {
