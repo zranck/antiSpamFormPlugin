@@ -48,11 +48,7 @@ $(document).ready(function() {
   function validPhone(e) {
      var userPhone=$('input[name=phone]').val();
      if(userPhone.length >= 11 ||!$.isNumeric(userPhone) || userPhone.length <= 9) {
-       e.preventDefault();
-       alert('Please Enter A Valid 10 Digit Phone Number');
-       $('input[name=phone]').focus();
-       console.log('fail');
-       return false;
+       badActor(e);
      }
   }
   
