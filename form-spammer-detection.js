@@ -30,17 +30,23 @@ $(document).ready(function() {
   }
   
   
-  //check if email address corresponds to a spam domain
+  //check if email address corresponds to a spam domain and now including a ban list
   function validEmail(e) {
      var userEmail=$('input[name=email]').val();
         userEmail=userEmail.split('@');
         userEmail=userEmail[1].split('.');
         userEmail=userEmail[1].toLowerCase().toString();
-    if(userEmail!='ru' && userEmail!='ua' && userEmail!='ml' && userEmail!='tst' && userEmail!='top' && userEmail!='xyz' && userEmail!='info') {
+    var fullEmail = $('input[name=email]').val();
+    var domainEmail = $('input[name=email]').val();
+        domainEmail = domainEmail.split('@');
+        domainEmail = domainEmail[1].split('.');
+        domainEmail = domainEmail[0].toLowerCase().toString();
+    if(userEmail!='ru' && userEmail!='ua' && userEmail!='ml' && userEmail!='tst' && userEmail!='top' && userEmail!='xyz' && userEmail!='info' && domainEmail!='glmux.com') {
       console.log('pass'+userEmail);
       return true;
     } else {
       console.log('bad email');
+      console.log('email:'+userEmail+' '+domainEmail);
       badActor(e);
     }
   }
