@@ -36,7 +36,7 @@ $(document).ready(function() {
         userEmail=userEmail.split('@');
         userEmail=userEmail[1].split('.');
         userEmail=userEmail[1].toLowerCase().toString();
-    if(userEmail!='ru' && userEmail!='ua' && userEmail!='ml' ) {
+    if(userEmail!='ru' && userEmail!='ua' && userEmail!='ml' && userEmail!='tst' && userEmail!='top' && userEmail!='xyz' && userEmail!='info') {
       console.log('pass'+userEmail);
       return true;
     } else {
